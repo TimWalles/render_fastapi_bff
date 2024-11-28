@@ -14,12 +14,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-origins = [
-    "http://localhost:5173",
-    "https://localhost:5173",
-    "http://localhost",
-    "localhost:5173",
-]
+origins = ["*"]
 
 
 # region app
