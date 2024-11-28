@@ -93,7 +93,7 @@ async def get_user_score(
 
 @router.get(
     "/total_score/get",
-    response_model=Page[TotalScoreResponse],
+    response_model=TotalScoreResponse,
     status_code=status.HTTP_200_OK,
     summary="Get total score of all users",
 )
@@ -101,14 +101,12 @@ async def get_total_score(
     data_session: Session = Depends(get_data_db_session),
     user_session: Session = Depends(get_user_db_session),
     current_user: User = Depends(get_current_active_user),
-    params: Params = Depends(),
 ):
     try:
-        response = await get_total_scores(
+        return await get_total_scores(
             data_session=data_session,
             user_session=user_session,
         )
-        return paginate(response)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

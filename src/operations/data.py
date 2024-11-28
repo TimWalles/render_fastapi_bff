@@ -242,7 +242,7 @@ async def get_total_scores(
             for i in users
         ]
         total_scores.sort(key=lambda x: x.total_score, reverse=True)
-        return TotalScoreResponse(users=total_scores)
+        return TotalScoreResponse(users=total_scores[:5])
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
