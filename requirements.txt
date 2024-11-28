@@ -1,1 +1,10 @@
-fastapi[all]
+fastapi[standard]==0.115.5
+fastapi-pagination==0.12.32
+pymysql==1.1.1
+pg8000==1.31.2
+sqlmodel==0.0.22
+greenlet==3.1.1
+pydantic-settings==2.6.1
+aiomysql==0.2.0
+bcrypt==4.2.1
+python-jose[cryptography]==3.3.0

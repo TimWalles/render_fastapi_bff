@@ -1,27 +1,66 @@
-# Deploy FastAPI on Render
+![Python](https://img.shields.io/badge/python-3.13-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-latest-orange.svg)
+![SQLModel](https://img.shields.io/badge/SQLModel-latest-orange.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Use this repo as a template to deploy a Python [FastAPI](https://fastapi.tiangolo.com) service on Render.
+# Hackaton Backend for Frontend
+## Installation and Setup of your environment
 
-See https://render.com/docs/deploy-fastapi or follow the steps below:
+To run the API, follow these steps to set up your environment:
 
-## Manual Steps
-
-1. You may use this repository directly or [create your own repository from this template](https://github.com/render-examples/fastapi/generate) if you'd like to customize the code.
-2. Create a new Web Service on Render.
-3. Specify the URL to your new repository or this repository.
-4. Render will automatically detect that you are deploying a Python service and use `pip` to download the dependencies.
-5. Specify the following as the Start Command.
-
-    ```shell
-    uvicorn main:app --host 0.0.0.0 --port $PORT
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/TimWalles/ht_backend_for_frontend.git
     ```
 
-6. Click Create Web Service.
+2. Navigate to the project directory:
+    ```bash
+    cd ht_backend_for_frontend
+    ```
 
-Or simply click:
+3. Create a virtual environment (optional but recommended):
+    ```bash
+    python3 -m venv env
+    ```
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/fastapi)
+4. Activate the virtual environment:
+    - For Windows:
+      ```bash
+      .\env\Scripts\activate
+      ```
+    - For macOS and Linux:
+      ```bash
+      source env/bin/activate
+      ```
 
-## Thanks
+5. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Thanks to [Harish](https://harishgarg.com) for the [inspiration to create a FastAPI quickstart for Render](https://twitter.com/harishkgarg/status/1435084018677010434) and for some sample code!
+6. Set up your MySQL database:
+    - Create a new MySQL database for users and data.
+    - Copy the `.env-dist` file and rename it to `.env`
+    - Update the `.env` file with your database credentials:
+      ```env
+      DATABASE_DOMAIN="your_database_domain"
+      DATABASE_USER="your_database_user"
+      DATABASE_PASSWORD="your_database_password"
+      USERS_DATABASE_NAME="your_users_database_name"
+      DATA_DATABASE_NAME="your_data_database_name"
+      SECRET_KEY="your_secret_key"
+      ALGORITHM="HS256"
+      ACCESS_TOKEN_EXPIRE_MINUTES=30
+      ```
+7. Generate a secret key:
+    - You can generate a secret key using the following terminal command:
+      ```bash
+      openssl rand -hex 32
+      ```
+    - Copy the generated key and update the `SECRET_KEY` in your `.env` file.
+
+## Commitment
+The Data processing pipeline and LabelChecker program are available free of charge and compatible with all major operating systems. All data processing occurs locally, ensuring that there is no transfer of ownership of the complete dataset or any of its components from the user.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
